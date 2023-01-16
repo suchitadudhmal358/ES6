@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow function exercise 1</title>
+  </head>
+  <body>
+    <ul>
+      <li data-time="5:17">FlexBox Video</li>
+      <li data-time="8:22">FlexBox Video</li>
+      <li data-time="5:17">Redux Video</li>
+      <li data-time="5:23">FlexBox Video</li>
+      <li data-time="7:12">FlexBox Video</li>
+      <li data-time="5:17">Redux Video</li>
+      <li data-time="6:46">FlexBox Video</li>
+      <li data-time="4:45">FlexBox Video</li>
+      <li data-time="4:40">FlexBox Video</li>
+      <li data-time="5:17">FlexBox Video</li>
+      <li data-time="5:17">Redux Video</li>
+      <li data-time="11:51">FlexBox Video</li>
+      <li data-time="9:13">FlexBox Video</li>
+      <li data-time="5:50">FlexBox Video</li>
+      <li data-time="5:17">Redux Video</li>
+      <li data-time="5:49">FlexBox Video</li>
+      <li data-time="8:57">FlexBox Video</li>
+      <li data-time="11:29">FlexBox Video</li>
+      <li data-time="2:07">FlexBox Video</li>
+      <li data-time="5:50">Redux Video</li>
+      <li data-time="3:31">FlexBox Video</li>
+    </ul>
+
+    <script>
+      const items = Array.from(document.querySelectorAll("[data-time]"));
+
+      console.log(items);
+      const filtered = items
+        .filter((item) => item.textContent.includes("FlexBox"))
+        .map((item) => item.dataset.time)
+        .map((timeCode) => {
+          const parts = timeCode.split(":").map((part) => parseFloat(part));
+          //   console.log(parts);
+          return parts[0] * 60 + parts[1];
+        })
+        .reduce((total, second) => total + second, 0);
+      console.log(filtered);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrow function with this keyword</title>
+  </head>
+
+  <body>
+    <style>
+      .wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        font-weight: 100;
+      }
+      .box {
+        background-color: black;
+        width: 50px;
+        height: 50px;
+        padding: 50px;
+        transition: width 0.2s, height 0.6s;
+        position: relative;
+      }
+      .box.opening {
+        width: 500px;
+        height: 500px;
+      }
+
+      .box h1 {
+        position: absolute;
+        width: 100%;
+        transform: translateX(-200%);
+        transition: all 0.5s;
+        top: 0;
+      }
+      .box p {
+        position: absolute;
+        width: 100%;
+        transform: translateX(200%);
+        transition: all 0.5s;
+        bottom: 0;
+      }
+      .box.open > * {
+        transform: translateX(0%);
+      }
+    </style>
+    <div class="wrap">
+      <div class="box">
+        <h1>Wes Bos</h1>
+        <p class="social">@wesbos</p>
+      </div>
+    </div>
+
+    <script>
+      const box = document.querySelector(".box");
+
+      box.addEventListener("click", function () {
+        let first = "opening";
+        let second = "open";
+
+        if (this.classList.contains(first)) {
+          [first, second] = [second, first];
+        }
+        this.classList.toggle(first);
+        setTimeout(() => {
+          this.classList.toggle(second);
+        }, 500);
+      });
+    </script>
+  </body>
+</html>
